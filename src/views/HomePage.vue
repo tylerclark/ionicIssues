@@ -4,8 +4,12 @@
       <ion-toolbar>
         <ion-title>Blank</ion-title>
         <ion-buttons slot="end">
-          <ion-button @click="openMenu">
-            <ion-icon slot="icon-only" :icon="ellipsisHorizontal"></ion-icon>
+          <ion-button color="primary" fill="solid" @click="openMenu">
+            <svg slot="icon-only" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+              <circle cx="256" cy="256" r="48" />
+              <circle cx="416" cy="256" r="48" />
+              <circle cx="96" cy="256" r="48" />
+            </svg>
           </ion-button>
         </ion-buttons>
       </ion-toolbar>
@@ -38,7 +42,6 @@ import {
   IonButton,
   IonIcon,
 } from "@ionic/vue";
-import { ellipsisHorizontal } from "ionicons/icons";
 import Menu from "./Menu.vue";
 import Signup from "./Signup.vue";
 
@@ -84,6 +87,10 @@ const openMenu = async (ev: Event) => {
 </style>
 
 <style scoped>
+.ionicon {
+  fill: currentColor;
+  width: 30px;
+}
 #container {
   text-align: center;
 
