@@ -46,7 +46,6 @@ import Menu from "./Menu.vue";
 import Signup from "./Signup.vue";
 
 const openSignup = async () => {
-  console.log("home:openSignup");
   const modal = await modalController.create({
     cssClass: "signinModal",
     component: Signup,

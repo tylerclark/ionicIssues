@@ -65,6 +65,8 @@ import {
 const closeModal = () => {
   return modalController.dismiss();
 };
+
+console.log("test");
 </script>
 
 <style scoped>

@@ -17,7 +17,6 @@ const props = defineProps({
 });
 
 const openSignup = () => {
-  console.log("menu:openSignup");
   props.openSignup();
 };
 </script>
