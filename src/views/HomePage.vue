@@ -4,8 +4,13 @@
       <ion-toolbar>
         <ion-title>Blank</ion-title>
         <ion-buttons slot="end">
-          <ion-button color="primary" fill="solid" @click="openMenu">
-            <svg slot="icon-only" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+          <ion-button color="primary" fill="solid" id="main-menu-trigger">
+            <svg
+              slot="icon-only"
+              xmlns="http://www.w3.org/2000/svg"
+              class="ionicon"
+              viewBox="0 0 512 512"
+            >
               <circle cx="256" cy="256" r="48" />
               <circle cx="416" cy="256" r="48" />
               <circle cx="96" cy="256" r="48" />
@@ -16,15 +21,14 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>
-          Start with Ionic
-          <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components"
-            >UI Components</a
-          >
-        </p>
-      </div>
+      <ion-popover
+        trigger="main-menu-trigger"
+        dismissOnSelect="true"
+        showBackdrop="false"
+        cssClass="menuPopover"
+      >
+        <app-menu @open-sign-up="openSignup" @open-sign-up-2="openSignup2" />
+      </ion-popover>
     </ion-content>
   </ion-page>
 </template>
@@ -41,8 +45,9 @@ import {
   IonButtons,
   IonButton,
   IonIcon,
+  IonPopover,
 } from "@ionic/vue";
-import Menu from "./Menu.vue";
+import AppMenu from "@/views/AppMenu.vue";
 import Signup from "./Signup.vue";
 
 const openSignup = async () => {
@@ -54,24 +59,14 @@ const openSignup = async () => {
   modal.present();
 };
 
-const openMenu = async (ev: Event) => {
-  const popover = await popoverController.create({
-    component: Menu,
-    cssClass: "menuPopover",
-    event: ev,
-    dismissOnSelect: true,
-    showBackdrop: false,
-    componentProps: {
-      openSignup: openSignup,
-    },
-  });
-  await popover.present();
+const openSignup2 = async (payload: { name: string; when: Date }) => {
+  alert(JSON.stringify(payload));
 };
 </script>
 
 <style>
 .menuPopover {
-  --background: orange;
+  --background: green;
   --color: white;
 }
 .signinModal {
